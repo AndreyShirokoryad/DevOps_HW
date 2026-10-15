@@ -1,0 +1,4 @@
+vm_ip                = "YOUR_VM_IP"
+ssh_user             = "student"
+ssh_private_key_path = "~/.ssh/devops_hw_ed25519"
+nginx_external_port  = 8080
