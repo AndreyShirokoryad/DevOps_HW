@@ -1,0 +1,25 @@
+services:
+  app:
+    image: nginx:alpine
+    container_name: homework-app
+    volumes:
+      - ./app/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - compose_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: homework-proxy
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - compose_network
+
+networks:
+  compose_network:
+    name: compose_app_network
+    driver: bridge
